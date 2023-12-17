@@ -6,7 +6,7 @@ import { CartContext } from "../../Contexts/cart.context";
 import "./cart-icon.styles.scss";
 
 const CartIcon = () => {
-  const { setIsCartOpen } = useContext(CartContext);
+  const { setIsCartOpen, cartItems } = useContext(CartContext);
 
   const toggleCart = () => {
     setIsCartOpen((prevState) => !prevState);
@@ -15,7 +15,9 @@ const CartIcon = () => {
   return (
     <div className="cart-icon-container" onClick={toggleCart}>
       <ShippingIcon className="shipping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">
+        {cartItems.reduce((acc, curr) => acc + curr.quantity, 0)}
+      </span>
     </div>
   );
 };
