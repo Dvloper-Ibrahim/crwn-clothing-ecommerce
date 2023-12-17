@@ -1,5 +1,5 @@
-import { Fragment, useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Fragment, useContext, useEffect } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 
 import { ReactComponent as CrwnLogo } from "../../Assets/crown.svg";
 import CartIcon from "../../Components/cart-icon/cart-icon.component";
@@ -13,13 +13,30 @@ import "./navigation.styles.scss";
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
-  // console.log(currentUser);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+
+  // Close the cartDropdown when click is away
+  const onClickAway = (event) => {
+    const target = event.target;
+    const fullIcon = document.querySelector(".cart-icon-container");
+
+    if (!fullIcon.contains(target)) setIsCartOpen(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", onClickAway);
+
+    return () => {
+      document.removeEventListener("click", onClickAway);
+    };
+  }, []);
+
+  const navigateTo = useNavigate();
 
   const signOutHandler = async () => {
     await signOutUser();
     setCurrentUser(null);
-    window.location.assign("/");
+    navigateTo("/");
   };
 
   return (

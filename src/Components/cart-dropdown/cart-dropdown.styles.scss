@@ -13,7 +13,7 @@
 
   .empty-message {
     font-size: 18px;
-    margin: 50px auto;
+    margin: 50% auto;
   }
 
   .cart-items {
@@ -21,6 +21,14 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 9px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
 
   button {
