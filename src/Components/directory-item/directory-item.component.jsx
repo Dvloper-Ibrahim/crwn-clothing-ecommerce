@@ -12,7 +12,7 @@ export const DirectoryItem = ({ item }) => {
 
   return (
     <DirectoryItemContainer key={item.id} onClick={onNavigateHandler}>
-      <BackgroundImage imageUrl={item.imageUrl} />
+      <BackgroundImage imageurl={item.imageUrl} />
       <Body>
         <h2>{item.title}</h2>
         <p>Shop Now</p>
