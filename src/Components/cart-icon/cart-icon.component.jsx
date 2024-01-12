@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
-import { ReactComponent as ShippingIcon } from "../../Assets/shopping-bag.svg";
+// import { ReactComponent as ShippingIcon } from "../../Assets/shopping-bag.svg";
 import { CartContext } from "../../Contexts/cart.context";
 
-import "./cart-icon.styles.scss";
+import { CartIconContainer, ShippingIcon, ItemCount } from "./cart-icon.styles";
 
 const CartIcon = () => {
   const { setIsCartOpen, cartItems } = useContext(CartContext);
@@ -13,12 +13,12 @@ const CartIcon = () => {
   };
 
   return (
-    <div className="cart-icon-container" onClick={toggleCart}>
+    <CartIconContainer className="cart-icon-container" onClick={toggleCart}>
       <ShippingIcon className="shipping-icon" />
-      <span className="item-count">
+      <ItemCount>
         {cartItems.reduce((acc, curr) => acc + curr.quantity, 0)}
-      </span>
-    </div>
+      </ItemCount>
+    </CartIconContainer>
   );
 };
 
