@@ -9,7 +9,7 @@ const Checkout = () => {
   const { cartItems } = useContext(CartContext);
 
   return (
-    <div className="checkout-container">
+    <div className="checkout-container" style={{ marginTop: "100px" }}>
       <div className="checkout-header">
         <span className="header-block">product</span>
         <span className="header-block">description</span>

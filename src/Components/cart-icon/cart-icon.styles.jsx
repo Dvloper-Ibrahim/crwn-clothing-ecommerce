@@ -15,6 +15,11 @@ export const CartIconContainer = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  @media (max-width: 767px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 export const ItemCount = styled.span`
@@ -22,6 +27,10 @@ export const ItemCount = styled.span`
   font-size: 12px;
   font-weight: bold;
   bottom: 8px;
+
+  @media (max-width: 767px) {
+    bottom: 12px;
+  }
 `;
 
 // .cart-icon-container {

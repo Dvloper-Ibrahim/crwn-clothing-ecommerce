@@ -16,7 +16,7 @@ const Category = () => {
   }, [category, categoriesMap]);
 
   return (
-    <div className="category-container">
+    <div className="category-container" style={{ marginTop: "100px" }}>
       <h1 className="title">{category.toUpperCase()}</h1>
 
       <div className="body">
