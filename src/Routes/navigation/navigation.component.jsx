@@ -53,10 +53,8 @@ const Navigation = () => {
     document.addEventListener("click", onClickAway);
 
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        console.log(true);
-        setScrolled(true);
-      } else setScrolled(false);
+      if (window.scrollY > 50) setScrolled(true);
+      else setScrolled(false);
     });
 
     return () => {

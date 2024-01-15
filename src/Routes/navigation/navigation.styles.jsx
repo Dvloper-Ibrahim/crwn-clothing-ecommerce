@@ -19,7 +19,7 @@ export const NavigationContainer = styled.div`
   box-shadow: ${({ scrolled }) => (scrolled ? "0 0 15px 0 #aaa" : "")};
   position: fixed;
   z-index: 2;
-  padding: 0 15px;
+  padding: 0 40px;
   top: 0;
   left: 0;
 
@@ -42,6 +42,7 @@ export const NavigationContainer = styled.div`
 
   @media (max-width: 767px) {
     height: 70px;
+    padding: 0 15px;
   }
 `;
 
@@ -97,6 +98,7 @@ export const NavLinks = styled.div`
   transition: 0.3s;
 
   .close {
+    display: none;
     position: absolute;
     top: 5px;
     right: 20px;
@@ -121,6 +123,10 @@ export const NavLinks = styled.div`
     transform: translateX(100%);
     z-index: 3;
 
+    .close {
+      display: inline;
+    }
+
     .cart-icon-container {
       padding: 10px 15px 10px 0;
     }
@@ -132,4 +138,8 @@ export const NavLinksContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   min-width: 390px;
+
+  @media (max-width: 767px) {
+    min-width: auto;
+  }
 `;
