@@ -6,7 +6,7 @@ import CheckoutItem from "../../Components/checkout-item/checkout-item.component
 import "./checkout.styles.scss";
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, cartTotal } = useContext(CartContext);
 
   return (
     <div className="checkout-container" style={{ marginTop: "100px" }}>
@@ -37,10 +37,11 @@ const Checkout = () => {
         <tfoot>
           <span className="total">
             Total: $
-            {cartItems.reduce(
+            {/* {cartItems.reduce(
               (acc, curr) => acc + curr.quantity * curr.price,
               0
-            )}
+            )} */}
+            {cartTotal}
           </span>
         </tfoot>
       </table>

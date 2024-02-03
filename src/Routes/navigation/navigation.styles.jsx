@@ -32,6 +32,7 @@ export const NavigationContainer = styled.div`
     z-index: 2;
     height: 100%;
     opacity: 0;
+    transition: 0.3s;
     pointer-events: none;
   }
 
