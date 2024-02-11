@@ -90,7 +90,7 @@ export const NavLink = styled(Link)`
 `;
 
 export const NavLinks = styled.div`
-  width: 50%;
+  width: 55%;
   height: 100%;
   display: flex;
   align-items: center;
