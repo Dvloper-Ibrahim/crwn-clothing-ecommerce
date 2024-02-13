@@ -33,8 +33,6 @@ const INITIAL_STATE = {
 };
 
 export function UserProvider({ children }) {
-  // const [currentUser, setCurrentUser] = useState(null);
-
   // Using reducers instead of state
   const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
 
@@ -43,8 +41,8 @@ export function UserProvider({ children }) {
   const setCurrentUser = (user) => {
     dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user));
   };
-  // Using reducers instead of state
 
+  // Using reducers instead of state
   const value = { currentUser, setCurrentUser };
 
   useEffect(() => {
