@@ -70,42 +70,17 @@ const cartReducer = (state, action) => {
   }
 };
 
-// const addToCartAction = (itemToAdd)=>{
-//   dispatch({type: "ADD_TO_CART", payload: itemToAdd});
-// }
-
 export const CartProvider = ({ children }) => {
-  // const [isCartOpen, setIsCartOpen] = useState(false);
-  // const [cartItems, setCartItems] = useState([]);
-  // const [cartCount, setCartCount] = useState([]);
-  // const [cartTotal, setCartTotal] = useState([]);
-
   const [{ cartItems, isCartOpen, cartCount, cartTotal }, dispatch] =
     useReducer(cartReducer, INITIAL_STATE);
 
-  // useEffect(() => {
-  //   const newCartCount = cartItems.reduce(
-  //     (total, cartItem) => total + cartItem.quantity,
-  //     0
-  //   );
-  //   setCartCount(newCartCount);
-  // }, [cartItems]);
-
-  // useEffect(() => {
-  //   const newCartTotal = cartItems.reduce(
-  //     (total, cartItem) => total + cartItem.quantity * cartItem.price,
-  //     0
-  //   );
-  //   setCartTotal(newCartTotal);
-  // }, [cartItems]);
-
   const updateCartItemsReducer = (newCartItems) => {
-    const newCartCount = cartItems.reduce(
+    const newCartCount = newCartItems.reduce(
       (total, cartItem) => total + cartItem.quantity,
       0
     );
 
-    const newCartTotal = cartItems.reduce(
+    const newCartTotal = newCartItems.reduce(
       (total, cartItem) => total + cartItem.quantity * cartItem.price,
       0
     );
