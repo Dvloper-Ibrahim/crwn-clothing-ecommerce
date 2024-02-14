@@ -1,12 +1,10 @@
-import { Fragment, useContext } from "react";
+import { useSelector } from "react-redux";
 
-import { CategoriesContext } from "../../Contexts/categories.context";
+import { selectCategoriesMap } from "../../Store/categories/category.selector";
 import CategoryPreview from "../../Components/category-preview/category-preview.component";
 
-import { CategoriesPreviewContainer } from "./categories-preview.styles";
-
 const CategoriesPreview = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(selectCategoriesMap);
 
   return (
     <div style={{ marginTop: "100px" }}>
