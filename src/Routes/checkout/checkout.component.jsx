@@ -15,13 +15,6 @@ const Checkout = () => {
 
   return (
     <div className="checkout-container" style={{ marginTop: "100px" }}>
-      {/* <div className="checkout-header">
-        <span className="header-block">product</span>
-        <span className="header-block">description</span>
-        <span className="header-block">quantity</span>
-        <span className="header-block">price</span>
-        <span className="header-block">remove</span>
-      </div> */}
       <table>
         <thead>
           <tr className="checkout-header">
@@ -40,14 +33,7 @@ const Checkout = () => {
         </tbody>
 
         <tfoot>
-          <span className="total">
-            Total: $
-            {/* {cartItems.reduce(
-              (acc, curr) => acc + curr.quantity * curr.price,
-              0
-            )} */}
-            {cartTotal}
-          </span>
+          <span className="total">Total: $ {cartTotal}</span>
         </tfoot>
       </table>
     </div>
