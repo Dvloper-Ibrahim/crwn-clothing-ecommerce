@@ -36,14 +36,14 @@ export const NavigationContainer = styled.div`
     pointer-events: none;
   }
 
-  .overlay.active {
-    opacity: 0.7;
-    pointer-events: all;
-  }
-
   @media (max-width: 767px) {
     height: 70px;
     padding: 0 15px;
+
+    .overlay.active {
+      opacity: 0.7;
+      pointer-events: all;
+    }
   }
 `;
 
