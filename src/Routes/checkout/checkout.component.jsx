@@ -1,22 +1,20 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
-import { CartContext } from "../../Contexts/cart.context";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../Store/cart/cart.selector";
+
 import CheckoutItem from "../../Components/checkout-item/checkout-item.component";
 
 import "./checkout.styles.scss";
 
 const Checkout = () => {
-  const { cartItems, cartTotal } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <div className="checkout-container" style={{ marginTop: "100px" }}>
-      {/* <div className="checkout-header">
-        <span className="header-block">product</span>
-        <span className="header-block">description</span>
-        <span className="header-block">quantity</span>
-        <span className="header-block">price</span>
-        <span className="header-block">remove</span>
-      </div> */}
       <table>
         <thead>
           <tr className="checkout-header">
@@ -35,14 +33,7 @@ const Checkout = () => {
         </tbody>
 
         <tfoot>
-          <span className="total">
-            Total: $
-            {/* {cartItems.reduce(
-              (acc, curr) => acc + curr.quantity * curr.price,
-              0
-            )} */}
-            {cartTotal}
-          </span>
+          <span className="total">Total: $ {cartTotal}</span>
         </tfoot>
       </table>
     </div>
