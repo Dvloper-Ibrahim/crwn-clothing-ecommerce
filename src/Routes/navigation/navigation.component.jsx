@@ -6,7 +6,7 @@ import { ReactComponent as CrwnLogo } from "../../Assets/crown.svg";
 import CartIcon from "../../Components/cart-icon/cart-icon.component";
 import CartDropdown from "../../Components/cart-dropdown/cart-dropdown.component";
 
-import { setCurrentUser } from "../../Store/user/user.action";
+import { setCurrentUser, signOutStart } from "../../Store/user/user.action";
 import { selectCurrentUser } from "../../Store/user/user.selector";
 import { selectIsCartOpen } from "../../Store/cart/cart.selector";
 import { setIsCartOpen } from "../../Store/cart/cart.action";
@@ -77,9 +77,7 @@ const Navigation = () => {
   const navigateTo = useNavigate();
 
   const signOutHandler = async () => {
-    await signOutUser();
-
-    dispatch(setCurrentUser(null));
+    dispatch(signOutStart());
     navigateTo("/");
   };
 

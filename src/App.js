@@ -2,12 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { setCurrentUser } from "./Store/user/user.action";
-
-import {
-  onAuthStateChangedListener,
-  createUserDocumentFromAuth,
-} from "./Utils/firebase/firebase.utils";
+import { checkUserSession } from "./Store/user/user.action";
 
 import Navigation from "./Routes/navigation/navigation.component";
 import Home from "./Routes/home/home.component";
@@ -19,13 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener(async (user) => {
-      if (user) {
-        await createUserDocumentFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe;
+    dispatch(checkUserSession());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

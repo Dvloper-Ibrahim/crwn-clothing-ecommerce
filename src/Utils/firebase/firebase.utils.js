@@ -96,7 +96,7 @@ export const createUserDocumentFromAuth = async (
     }
   }
 
-  return userDocRef;
+  return userSnapShot;
 };
 
 // Sign up eith email and password
@@ -132,4 +132,18 @@ export const getCategoriesAndDocuments = async () => {
   //   return acc;
   // }, {});
   // return categoryMap;
+};
+
+// If We Use redux-saga
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
 };

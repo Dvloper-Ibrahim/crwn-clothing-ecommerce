@@ -3,10 +3,10 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 
-// Use redux-thunk or redux-saga
+// Use redux-thunk instead of redux-saga
 // import { thunk } from "redux-thunk";
 
-// Use redux-thunk or redux-saga
+// Use redux-saga instead of redux-thunk
 import createSagaMiddleware from "redux-saga";
 import { rootSaga } from "./root-saga";
 
