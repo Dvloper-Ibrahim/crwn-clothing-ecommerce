@@ -2,11 +2,8 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-// import { getCategoriesAndDocuments } from "../../Utils/firebase/firebase.utils.js";
-// import { setCategories } from "../../Store/categories/category.action.js";
-
-// Our thunk function
-import { fetchCategoriesAsync } from "../../Store/categories/category.action.js";
+import { getCategoriesAndDocuments } from "../../Utils/firebase/firebase.utils.js";
+import { setCategories } from "../../Store/categories/category.reducer.js";
 
 import CategoriesPreview from "../categories-preview/categories-preview.component";
 import Category from "../category/category.component";
@@ -17,12 +14,12 @@ const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategoriesAsync());
-    // const getCategoriesMap = async () => {
-    //   const categoriesArray = await getCategoriesAndDocuments();
-    // };
+    const getCategoriesMap = async () => {
+      const categoriesArray = await getCategoriesAndDocuments();
+      dispatch(setCategories(categoriesArray));
+    };
 
-    // getCategoriesMap();
+    getCategoriesMap();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

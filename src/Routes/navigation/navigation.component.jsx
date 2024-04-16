@@ -6,10 +6,10 @@ import { ReactComponent as CrwnLogo } from "../../Assets/crown.svg";
 import CartIcon from "../../Components/cart-icon/cart-icon.component";
 import CartDropdown from "../../Components/cart-dropdown/cart-dropdown.component";
 
-import { setCurrentUser } from "../../Store/user/user.action";
+import { setCurrentUser } from "../../Store/user/user.reducer";
 import { selectCurrentUser } from "../../Store/user/user.selector";
 import { selectIsCartOpen } from "../../Store/cart/cart.selector";
-import { setIsCartOpen } from "../../Store/cart/cart.action";
+import { setIsCartOpen } from "../../Store/cart/cart.reducer";
 
 import { signOutUser } from "../../Utils/firebase/firebase.utils";
 
