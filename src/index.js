@@ -3,10 +3,14 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+// Stripe
+import { Elements } from "@stripe/react-stripe-js";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store, persistor } from "./Store/store";
+// Stripe
+import { stripePromise } from "./Utils/stripe/stripe.utils";
 
 import "./index.scss";
 
@@ -15,9 +19,12 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* Using redux-persist */}
-      <PersistGate persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <App />
+          {/* Wrapping the app to register for Stripe */}
+          <Elements stripe={stripePromise}>
+            <App />
+          </Elements>
         </BrowserRouter>
       </PersistGate>
     </Provider>

@@ -34,8 +34,14 @@ const Navigation = () => {
   const onClickAway = (event) => {
     const target = event.target;
     const fullIcon = document.querySelector(".cart-icon-container");
+    const cartDropDown = document.querySelector(".cartdropdown-container");
 
-    if (!fullIcon.contains(target)) dispatch(setIsCartOpen(false));
+    if (
+      cartDropDown &&
+      !fullIcon.contains(target) &&
+      !cartDropDown.contains(target)
+    )
+      dispatch(setIsCartOpen(false));
   };
 
   // Toggle Navigation Links in Small Screens
