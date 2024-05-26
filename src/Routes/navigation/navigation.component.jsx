@@ -1,14 +1,15 @@
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { setCurrentUser } from "../../Store/user/user.action";
 import { ReactComponent as CrwnLogo } from "../../Assets/crown.svg";
 import CartIcon from "../../Components/cart-icon/cart-icon.component";
 import CartDropdown from "../../Components/cart-dropdown/cart-dropdown.component";
-// import { UserContext } from "../../Contexts/user.context";
-import { CartContext } from "../../Contexts/cart.context";
+
+import { setCurrentUser, signOutStart } from "../../Store/user/user.action";
 import { selectCurrentUser } from "../../Store/user/user.selector";
+import { selectIsCartOpen } from "../../Store/cart/cart.selector";
+import { setIsCartOpen } from "../../Store/cart/cart.action";
 
 import { signOutUser } from "../../Utils/firebase/firebase.utils";
 
@@ -23,10 +24,10 @@ import {
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
+
   const dispatch = useDispatch();
 
-  // const { currentUser, setCurrentUser } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   const [scrolled, setScrolled] = useState(false);
 
   // Close the cartDropdown when click is away
@@ -34,7 +35,7 @@ const Navigation = () => {
     const target = event.target;
     const fullIcon = document.querySelector(".cart-icon-container");
 
-    if (!fullIcon.contains(target)) setIsCartOpen(false);
+    if (!fullIcon.contains(target)) dispatch(setIsCartOpen(false));
   };
 
   // Toggle Navigation Links in Small Screens
@@ -76,10 +77,7 @@ const Navigation = () => {
   const navigateTo = useNavigate();
 
   const signOutHandler = async () => {
-    await signOutUser();
-
-    // setCurrentUser(null);
-    dispatch(setCurrentUser(null));
+    dispatch(signOutStart());
     navigateTo("/");
   };
 
