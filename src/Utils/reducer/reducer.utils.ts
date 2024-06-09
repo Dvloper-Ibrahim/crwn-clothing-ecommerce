@@ -1,4 +1,3 @@
-import { match } from "assert";
 import { AnyAction } from "redux";
 
 type Matchable<AC extends () => AnyAction> = AC & {
@@ -46,7 +45,5 @@ export function createAction<T extends string>(
 export function createAction<T extends string, P>(type: T, payload: P) {
   return { type, payload };
 }
-
-// const createAction = (type, payload) => ({ type, payload });
 
 export default createAction;
