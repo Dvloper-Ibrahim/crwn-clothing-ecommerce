@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import { useDispatch } from "react-redux";
 
 import {
@@ -23,7 +24,7 @@ const SignInForm = () => {
   const [valid, setValid] = useState(true);
   const { email, password } = formFields;
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields((prevState) => ({ ...prevState, [name]: value }));
   };
@@ -38,7 +39,7 @@ const SignInForm = () => {
   };
 
   // Submit and create the user
-  async function handleSubmit(e) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
@@ -47,10 +48,12 @@ const SignInForm = () => {
       setValid(true);
       resetFormFields();
     } catch (err) {
-      if (err.code === "auth/invalid-credential") {
+      // "auth/invalid-credential"
+      if (
+        (err as AuthError).code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS
+      ) {
         setValid(false);
       }
-      console.error(err.code);
     }
   }
 
@@ -58,7 +61,7 @@ const SignInForm = () => {
     <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit}>
         {!valid && <span className="invalid">Invalid email or password</span>}
         <FormInput
           label="Email"
