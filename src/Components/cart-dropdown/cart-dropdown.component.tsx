@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { selectCartItems } from "../../Store/cart/cart.selector";
 
 import Button from "../button/button.component";
-import CartItem from "../cart-item/cart-item.component";
+import CartElement from "../cart-item/cart-element.component";
 
 import {
   CartDropdownContainer,
@@ -25,7 +25,7 @@ const CartDropdown = () => {
     <CartDropdownContainer>
       <CartItems>
         {cartItems.length ? (
-          cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)
+          cartItems.map((item) => <CartElement key={item.id} cartItem={item} />)
         ) : (
           <EmptyMessage>Your cart is empty</EmptyMessage>
         )}

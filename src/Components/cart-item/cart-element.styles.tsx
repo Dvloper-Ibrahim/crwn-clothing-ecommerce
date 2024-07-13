@@ -1,4 +1,6 @@
-.cart-item-container {
+import styled from "styled-components";
+
+export const CartElementContainer = styled.div`
   display: flex;
   height: 80px;
   margin-bottom: 15px;
@@ -18,4 +20,4 @@
       font-weight: bold;
     }
   }
-}
+`;
