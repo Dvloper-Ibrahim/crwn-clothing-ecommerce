@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, FC, MouseEventHandler } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -31,20 +31,22 @@ const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
 
   // Close the cartDropdown when click is away
-  const onClickAway = (event) => {
-    const target = event.target;
-    const fullIcon = document.querySelector(".cart-icon-container");
+  const onClickAway = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const fullIcon = document.querySelector(
+      ".cart-icon-container"
+    ) as HTMLElement;
 
     if (!fullIcon.contains(target)) dispatch(setIsCartOpen(false));
   };
 
   // Toggle Navigation Links in Small Screens
-  const toggleMenu = (e) => {
-    const target = e.target;
-    const menu = document.querySelector(".menu");
-    const navLinks = document.querySelector(".nav-links");
-    const overlay = document.querySelector(".overlay");
-    const closeButton = document.querySelector(".close");
+  const toggleMenu: MouseEventHandler = (e) => {
+    const target = e.target as HTMLElement;
+    const menu = document.querySelector(".menu") as HTMLElement;
+    const navLinks = document.querySelector(".nav-links") as HTMLElement;
+    const overlay = document.querySelector(".overlay") as HTMLElement;
+    const closeButton = document.querySelector(".close") as HTMLElement;
 
     if (menu.contains(target)) {
       navLinks.classList.add("active");
@@ -98,7 +100,7 @@ const Navigation = () => {
             </span>
             <NavLink to="/shop">Shop</NavLink>
             {currentUser ? (
-              <NavLink as="span" onClick={signOutHandler}>
+              <NavLink as="span" to="" onClick={signOutHandler}>
                 Sign out
               </NavLink>
             ) : (
