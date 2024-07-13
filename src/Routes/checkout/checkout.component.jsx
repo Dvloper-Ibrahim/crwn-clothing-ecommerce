@@ -6,15 +6,16 @@ import {
 } from "../../Store/cart/cart.selector";
 
 import CheckoutItem from "../../Components/checkout-item/checkout-item.component";
+import PaymentForm from "../../Components/payment-form/payment-form.component";
 
-import "./checkout.styles.scss";
+import { CheckoutContainer } from "./checkout.styles";
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
   return (
-    <div className="checkout-container" style={{ marginTop: "100px" }}>
+    <CheckoutContainer style={{ marginTop: "100px" }}>
       <table>
         <thead>
           <tr className="checkout-header">
@@ -34,9 +35,10 @@ const Checkout = () => {
 
         <tfoot>
           <span className="total">Total: $ {cartTotal}</span>
+          <PaymentForm />
         </tfoot>
       </table>
-    </div>
+    </CheckoutContainer>
   );
 };
 
