@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectCartItems } from "../../Store/cart/cart.selector";
@@ -7,9 +8,10 @@ import {
   clearItemFromCart,
 } from "../../Store/cart/cart.action";
 
-import "./checkout-item.styles.scss";
+import { CheckoutItemContainer } from "./checkout-item.styles";
+import { CartElementProps } from "../cart-item/cart-element.component";
 
-const CheckoutItem = ({ cartItem }) => {
+const CheckoutItem: FC<CartElementProps> = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
   const dispatch = useDispatch();
@@ -20,7 +22,7 @@ const CheckoutItem = ({ cartItem }) => {
   const decreaseItem = () => dispatch(removeItemFromCart(cartItems, cartItem));
 
   return (
-    <tr className="checkout-item-container">
+    <CheckoutItemContainer>
       <td className="image-container">
         <img src={imageUrl} alt={name} />
       </td>
@@ -38,7 +40,7 @@ const CheckoutItem = ({ cartItem }) => {
       <td className="remove-button" onClick={removeFullItem}>
         ×
       </td>
-    </tr>
+    </CheckoutItemContainer>
   );
 };
 
