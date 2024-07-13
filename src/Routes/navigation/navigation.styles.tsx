@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 
 import { CartIconContainer } from "../../Components/cart-icon/cart-icon.styles";
 
-export const NavigationContainer = styled.div`
+type NavigationContainerProps = {
+  scrolled: boolean;
+};
+
+export const NavigationContainer = styled.div<NavigationContainerProps>`
   // height: 70px;
   // width: 100%;
   // display: flex;
